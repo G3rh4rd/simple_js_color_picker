@@ -1,4 +1,4 @@
-# simple_js_color_picker
+# simple js color picker
 Simple Javascript color-picker written in plain js
 
 How to use:
