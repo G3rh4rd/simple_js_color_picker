@@ -23,7 +23,7 @@ const MATERIAL_DESIGN_COLOR_PALETTE = {
 };
 
 class ColorPicker {
-    constructor(colorPalette, triggerElement) {
+    constructor(colorPalette, colorPickerContainer, triggerElement, setColorCallback) {
         this.colorPalette = colorPalette;
         this.colorPickerNode = document.createElement("div");
         this.colorPickerNode.style.display = "none";
@@ -37,7 +37,10 @@ class ColorPicker {
         this.applyColorBtn.style.width = "100%";
         this.applyColorBtn.style.backgroundColor = this.chosenColor;
         this.applyColorBtn.innerHTML = this.chosenColor;
-        this.applyColorBtn.addEventListener("click", () => {this.hide()});
+        this.applyColorBtn.addEventListener("click", () => {
+            this.hide();
+            setColorCallback(this.chosenColor);
+        });
 
         for(let i = 0; i < this.colorPalette.colorPalette.length; i++) {
             let newColorDiv = document.createElement("div");
@@ -57,14 +60,16 @@ class ColorPicker {
             this.colorPickerNode.appendChild(newColorDiv);
         }
 
-
         this.colorPickerNode.appendChild(this.applyColorBtn);
+        
+        this.insertInto(colorPickerContainer);
         
         triggerElement.addEventListener("click", () => {
             if(this.isVisible) this.hide();
             else this.show();
         });
 
+        
     }
 
     insertInto(element) {
