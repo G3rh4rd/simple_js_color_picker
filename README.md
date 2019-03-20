@@ -3,7 +3,7 @@ Simple Javascript color-picker written in plain js
 
 How to use:
 
-```
+```html
 <html>
     <head>        
     </head>
