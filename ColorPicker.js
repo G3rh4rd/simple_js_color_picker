@@ -41,7 +41,6 @@ class ColorPicker {
         this.applyColorBtn.innerHTML = this.chosenColor;
         this.applyColorBtn.addEventListener("click", () => {this.hide()});
 
-        this.lastChosenColDiv = null;
         for(let i = 0; i < this.colorPalette.length; i++) {
             let newColorDiv = document.createElement("div");
             newColorDiv.style.backgroundColor = this.colorPalette[i];
@@ -52,12 +51,9 @@ class ColorPicker {
 
             newColorDiv.addEventListener("click", () => {
                 this.chosenColor = newColorDiv.getAttribute("colpick");
-                if(this.lastChosenColDiv != null) this.lastChosenColDiv.style.border = "";
-                newColorDiv.style.border = "1px solid blue";
 
                 this.applyColorBtn.innerHTML = this.chosenColor;
                 this.applyColorBtn.style.backgroundColor =  this.chosenColor;
-                this.lastChosenColDiv = newColorDiv;
             });
 
             this.colorPickerNode.appendChild(newColorDiv);
