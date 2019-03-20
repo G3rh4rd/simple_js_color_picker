@@ -23,7 +23,7 @@ const MATERIAL_DESIGN_COLOR_PALETTE = {
 };
 
 class ColorPicker {
-    constructor(colorPalette) {
+    constructor(colorPalette, triggerElement) {
         this.colorPalette = colorPalette;
         this.colorPickerNode = document.createElement("div");
         this.colorPickerNode.style.display = "none";
@@ -59,6 +59,11 @@ class ColorPicker {
 
 
         this.colorPickerNode.appendChild(this.applyColorBtn);
+        
+        triggerElement.addEventListener("click", () => {
+            if(this.isVisible) this.hide();
+            else this.show();
+        });
 
     }
 
