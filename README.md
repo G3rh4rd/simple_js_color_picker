@@ -16,7 +16,7 @@ How to use:
             let colPick = new ColorPicker(MATERIAL_DESIGN_COLOR_PALETTE,
                                           document.getElementById("color_picker"),
                                           document.getElementById("triggerBbtn"),
-                                          (x) => {document.body.style.backgroundColor = x}
+                                          (pickedColor) => {document.body.style.backgroundColor = pickedColor}
                                          );
             
         </script>
