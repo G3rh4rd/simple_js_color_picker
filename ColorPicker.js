@@ -29,6 +29,7 @@ class ColorPicker {
     constructor(colorPalette, colorPickerContainer, triggerElement, setColorCallback) {
         this.colorPalette = colorPalette;
         this.colorPickerNode = document.createElement("div");
+        this.colorPickerNode.style.position = "relative";
         this.colorPickerNode.style.display = "none";
         this.isVisible = false;
  
@@ -44,6 +45,15 @@ class ColorPicker {
             this.hide();
             setColorCallback(this.chosenColor);
         });
+        
+        this.closeBtn = document.createElement("button");
+        this.closeBtn.innerHTML = "x";
+        this.closeBtn.style.position = "absolute";
+        this.closeBtn.style.top = "-20px";
+        this.closeBtn.style.right = "-20px";
+        this.closeBtn.addEventListener("click", () => { this.hide(); });
+        
+        this.colorPickerNode.appendChild(this.closeBtn);
 
         for(let i = 0; i < this.colorPalette.colorPalette.length; i++) {
             let newColorDiv = document.createElement("div");
